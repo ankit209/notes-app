@@ -9,15 +9,17 @@ Starter code for notes app, to be asked in android coding interviews
 
 #### Requirements:
 - Add edit note feature, tapping on a note in listview should open a new screen to edit the contents of the note.
+- Sort by creation time, or last updated time. (Add toolbar UI in starter code)
 - Implement autosave, i.e. content should be saved as soon as it is typed.
-- Add support for checklists, they are basically new type of notes which has an interactive list instead of para, and the individual items can be marked as checked. 
-- Modify the ListView to a list of cards which displays title, trimmed content (trimmed list in case of checklist), creation date. 
+- Add text search among notes. 
+
 
 #### Extensions
+- Modify the ListView to a list of cards which displays title, trimmed content (trimmed list in case of checklist), creation date. 
 - Add support for embedded images within the note.
-- Add text search among notes.
+- Add support for checklists, they are basically new type of notes which has an interactive list instead of para, and the individual items can be marked as checked.
 - Support user-generated tags (like personal, work, grocery, finance). Tag should be optional on a note. Add filter by tags
-- Sort by creation time, or last updated time.
+
 
 #### Signals to capture
 - Good amount of starter code to provide good review suggestions.
