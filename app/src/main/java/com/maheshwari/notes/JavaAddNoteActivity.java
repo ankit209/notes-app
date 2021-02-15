@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddNoteActivity extends AppCompatActivity {
+public class JavaAddNoteActivity extends AppCompatActivity {
 
     private NotesStore notesStore;
 
@@ -35,12 +35,12 @@ public class AddNoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = titleEdit.getText().toString();
                 if (TextUtils.isEmpty(title)){
-                    Toast.makeText(AddNoteActivity.this, "Please enter title", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JavaAddNoteActivity.this, "Please enter title", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String content = contentEdit.getText().toString();
                 if (TextUtils.isEmpty(content)){
-                    Toast.makeText(AddNoteActivity.this, "Please enter content", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JavaAddNoteActivity.this, "Please enter content", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 notesStore.saveNote(new Note(title, content));

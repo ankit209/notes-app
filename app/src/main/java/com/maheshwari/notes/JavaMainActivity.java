@@ -13,11 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class JavaMainActivity extends AppCompatActivity {
 
     private NotesStore notesStore;
 
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         addNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addNoteActivityIntent = new Intent(MainActivity.this, AddNoteActivity.class);
+                Intent addNoteActivityIntent = new Intent(JavaMainActivity.this, JavaAddNoteActivity.class);
                 startActivity(addNoteActivityIntent);
             }
         });
