@@ -1,4 +1,4 @@
-package com.interview.notes;
+package com.interview.notes.java;
 
 import android.app.Application;
 

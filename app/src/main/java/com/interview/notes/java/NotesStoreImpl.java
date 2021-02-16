@@ -1,4 +1,4 @@
-package com.interview.notes;
+package com.interview.notes.java;
 
 import android.content.Context;
 import android.content.SharedPreferences;

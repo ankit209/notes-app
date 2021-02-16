@@ -1,4 +1,4 @@
-package com.interview.notes;
+package com.interview.notes.java;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,7 +10,13 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class JavaAddNoteActivity extends AppCompatActivity {
+import com.interview.notes.R;
+
+/**
+ * {@link android.app.Activity} to create a new Note.
+ * The layout has two EditTexts, one for title and another for content
+ */
+public class AddNoteActivity extends AppCompatActivity {
 
     private NotesStore notesStore;
 
@@ -35,12 +41,12 @@ public class JavaAddNoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = titleEdit.getText().toString();
                 if (TextUtils.isEmpty(title)){
-                    Toast.makeText(JavaAddNoteActivity.this, "Please enter title", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddNoteActivity.this, "Please enter title", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String content = contentEdit.getText().toString();
                 if (TextUtils.isEmpty(content)){
-                    Toast.makeText(JavaAddNoteActivity.this, "Please enter content", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddNoteActivity.this, "Please enter content", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 notesStore.saveNote(new Note(title, content));

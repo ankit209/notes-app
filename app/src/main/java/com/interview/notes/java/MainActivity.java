@@ -1,4 +1,4 @@
-package com.interview.notes;
+package com.interview.notes.java;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,10 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.interview.notes.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class JavaMainActivity extends AppCompatActivity {
+/**
+ * Main {@link android.app.Activity} which displays a list of existing Notes.
+ */
+public class MainActivity extends AppCompatActivity {
 
     private NotesStore notesStore;
 
@@ -43,7 +48,7 @@ public class JavaMainActivity extends AppCompatActivity {
         addNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent addNoteActivityIntent = new Intent(JavaMainActivity.this, JavaAddNoteActivity.class);
+                Intent addNoteActivityIntent = new Intent(MainActivity.this, AddNoteActivity.class);
                 startActivity(addNoteActivityIntent);
             }
         });

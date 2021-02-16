@@ -1,4 +1,4 @@
-package com.interview.notes
+package com.interview.notes.kotlin
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,16 +10,20 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.interview.notes.R
 
-class KotlinMainActivity : AppCompatActivity() {
+/**
+ * Main {@link android.app.Activity} which displays a list of existing Notes.
+ */
+class MainActivity : AppCompatActivity() {
 
     /*
     *************************************************************************************************************************
-        NOTE: BEFORE MAKING CHANGES HERE, MAKE SURE THAT YOU CHANGE ACTIVITY TO KotlinMainActivity IN AndroidManifest.xml
+        NOTE: BEFORE MAKING CHANGES HERE, MAKE SURE THAT YOU CHANGE THE PACKAGE OF MainActivity IN AndroidManifest.xml
     *************************************************************************************************************************
     */
 
-    private lateinit var notesStore: NotesStore
+    private var notesStore: NotesStore? = null
 
     private lateinit var notesList: RecyclerView
     private lateinit var addNoteButton: Button
@@ -30,16 +34,17 @@ class KotlinMainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        notesStore = (application as MainApplication).notesStore
+        notesStore = (application as MainApplication).getNotesStore()
 
         notesList = findViewById(R.id.notes_list)
         addNoteButton = findViewById(R.id.btn_add_note)
         notesList.layoutManager = LinearLayoutManager(this)
         notesList.adapter = notesAdapter
-        notesAdapter.setNotes(notesStore.notes)
+
+        notesStore?.let { notesAdapter.setNotes(it.getNotes()) }
 
         addNoteButton.setOnClickListener {
-            val addNoteActivityIntent = Intent(this, KotlinAddNoteActivity::class.java)
+            val addNoteActivityIntent = Intent(this, AddNoteActivity::class.java)
             startActivity(addNoteActivityIntent)
         }
     }
@@ -47,7 +52,8 @@ class KotlinMainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         // Refresh notes in the RecyclerView
-        notesAdapter.setNotes(notesStore.notes)
+        notesStore?.let { notesAdapter.setNotes(it.getNotes()) }
+
     }
 
 

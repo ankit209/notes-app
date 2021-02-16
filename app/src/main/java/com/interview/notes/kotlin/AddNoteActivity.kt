@@ -1,4 +1,4 @@
-package com.interview.notes
+package com.interview.notes.kotlin
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,17 +8,21 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
+import com.interview.notes.R
 
-
-class KotlinAddNoteActivity : AppCompatActivity() {
+/**
+ * {@link android.app.Activity} to create a new Note.
+ * The layout has two EditTexts, one for title and another for content
+ */
+class AddNoteActivity : AppCompatActivity() {
 
     /*
     *************************************************************************************************************************
-        NOTE: BEFORE MAKING CHANGES HERE, MAKE SURE THAT YOU CHANGE ACTIVITY TO KotlinAddNoteActivity IN AndroidManifest.xml
+        NOTE: BEFORE MAKING CHANGES HERE, MAKE SURE THAT YOU CHANGE THE PACKAGE OF AddNoteActivity IN AndroidManifest.xml
     *************************************************************************************************************************
     */
 
-    private lateinit var notesStore: NotesStore
+    private var notesStore: NotesStore? = null
 
     private lateinit var titleEdit: EditText
     private lateinit var contentEdit: EditText
@@ -27,7 +31,7 @@ class KotlinAddNoteActivity : AppCompatActivity() {
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        notesStore = (application as MainApplication).notesStore
+        notesStore = (application as MainApplication).getNotesStore()
 
         setContentView(R.layout.activity_add_note)
 
@@ -38,15 +42,15 @@ class KotlinAddNoteActivity : AppCompatActivity() {
         saveNoteButton.setOnClickListener(View.OnClickListener {
             val title = titleEdit.getText().toString()
             if (TextUtils.isEmpty(title)) {
-                Toast.makeText(this@KotlinAddNoteActivity, "Please enter title", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddNoteActivity, "Please enter title", Toast.LENGTH_SHORT).show()
                 return@OnClickListener
             }
             val content = contentEdit.getText().toString()
             if (TextUtils.isEmpty(content)) {
-                Toast.makeText(this@KotlinAddNoteActivity, "Please enter content", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@AddNoteActivity, "Please enter content", Toast.LENGTH_SHORT).show()
                 return@OnClickListener
             }
-            notesStore.saveNote(Note(title, content))
+            notesStore?.saveNote(Note(title, content))
             finish()
         })
     }
