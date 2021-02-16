@@ -1,4 +1,4 @@
-package com.maheshwari.notes;
+package com.interview.notes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

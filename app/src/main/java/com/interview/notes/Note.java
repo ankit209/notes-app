@@ -1,4 +1,4 @@
-package com.maheshwari.notes;
+package com.interview.notes;
 
 public class Note {
 
